@@ -1,0 +1,101 @@
+<div class="content-home">
+  <div class="add-card">
+    <input
+      placeholder="Nome do desenvolvedor"
+      label="teste"
+      [(ngModel)]="newCard.nome"
+      class="text-input-new-card"
+    />
+
+    <textarea
+      class="text-input-new-card-description"
+      placeholder="Descrição"
+      [(ngModel)]="newCard.descricao"
+    ></textarea>
+  </div>
+  <button
+    mat-raised-button
+    style="background-color: rgb(249 52 52)"
+    color="primary"
+    (click)="addNewCard()"
+    class="button-create-task"
+  >
+    Adicionar Task
+  </button>
+  <mat-card class="content-card">
+    <mat-card-content class="kanban-content">
+      <div class="kanban-board">
+        <div
+          *ngFor="let status of statuses"
+          cdkDropList
+          [cdkDropListData]="cards | filterByStatus : status"
+          [cdkDropListConnectedTo]="statuses"
+          class="kanban-column"
+          id="{{ status }}"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <div class="status-column">
+            <div class="title-columns">{{ status }}</div>
+            <div
+              *ngFor="
+                let card of cards | filterByStatus : status;
+                let i = index
+              "
+              cdkDrag
+              [ngClass]="{
+                'card-backlog': card.status === 'Backlog',
+                'card-estacionado': card.status === 'Estacionado',
+                'card-codificacao': card.status === 'Codificação',
+                'card-code-review': card.status === 'Code Review',
+                'card-concluido': card.status === 'Concluído'
+              }"
+              class="kanban-card"
+            >
+              <div *ngIf="!card.editing; else editField">
+                <p class="card-text">
+                  <span class="name-title-card">Nome:</span> {{ card.nome }}
+                </p>
+                <div class="card-text">
+                  <span class="name-title-card">Descrição:</span>
+                  {{ card.descricao }}
+                </div>
+              </div>
+              <ng-template #editField>
+                <input
+                  placeholder="Nome do desenvolvedor"
+                  [(ngModel)]="newCard.nome"
+                  class="text-input-card-edit"
+                />
+                <textarea
+                  class="text-input-card-edit"
+                  matInput
+                  [(ngModel)]="card.descricao"
+                  placeholder="Descrição"
+                ></textarea>
+              </ng-template>
+              <div class="buttons-card">
+                <button
+                  mat-raised-button
+                  color="accent"
+                  style="background-color: #f7f7f7"
+                  (click)="toggleEdit(card)"
+                >
+                  {{ card.editing ? "Salvar" : "Editar" }}
+                </button>
+                <button
+                  mat-raised-button
+                  color="primary"
+                  (click)="card.id ? deleteCard(card.id) : null"
+                  style="background-color: rgb(249 52 52)"
+                  class="button-delete-card"
+                >
+                  Excluir
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

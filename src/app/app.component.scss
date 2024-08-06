@@ -1,0 +1,20 @@
+.home-page {
+  display: flex;
+  justify-content: center;
+}
+.app-header {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 50px;
+  align-items: center;
+}
+.title-header {
+  margin-left: 10%;
+  color: #606060;
+  font: 2em;
+  font-family: "Muli", sans-serif;
+}
+.image-header {
+  margin-left: 2%;
+}

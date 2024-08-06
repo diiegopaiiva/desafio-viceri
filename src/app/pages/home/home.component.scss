@@ -1,0 +1,154 @@
+.content-card {
+  max-width: 100%;
+  margin: 55px auto;
+}
+
+.kanban-card {
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: white;
+  max-width: 100%;
+  border-radius: 2px;
+}
+
+.card-text {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+  font-family: "Muli", sans-serif;
+}
+
+.kanban-board {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.kanban-column {
+  flex: 1;
+  min-width: 250px;
+  max-width: 300px;
+}
+.text-input {
+  width: 100%;
+}
+.text-input-new-card {
+  width: 30%;
+  display: flex;
+}
+textarea {
+  resize: none;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .kanban-column {
+    min-width: 100%;
+  }
+}
+.kanban-content {
+  background-color: rgb(255 245 245);
+  border-radius: 5px;
+}
+.status-column {
+  // border: solid 5px rgb(255, 255, 255);
+  padding: 15px;
+}
+.card-backlog {
+  border-left: 3px solid #b5b5b5;
+}
+
+.card-estacionado {
+  border-left: 3px solid #f7f00a;
+}
+
+.card-codificacao {
+  border-left: 3px solid #1700d5;
+}
+
+.card-code-review {
+  border-left: 3px solid #1facff;
+}
+
+.card-concluido {
+  border-left: 3px solid #00a705;
+}
+.title-columns {
+  text-align: center;
+  color: #606060;
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 20px;
+  font-size: 1.3em;
+  font-family: "Muli", sans-serif;
+}
+.kanban-column:not(:last-child) {
+  border-right: 1px solid #ccc;
+  padding-right: 10px;
+  margin-right: 10px;
+}
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #f5f5f5;
+}
+.text-input-new-card {
+  border: none;
+  border-bottom: solid 1px#ada3a3;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  outline: none;
+  font-size: 1.2em;
+  font-family: "Muli", sans-serif;
+}
+.text-input-new-card :focus {
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  border-bottom: solid 1px;
+}
+.text-input-new-card-description {
+  border: none;
+  border-bottom: solid 1px#ada3a3;
+  margin-bottom: 20px;
+  width: 30%;
+  outline: none;
+  font-size: 1.2em;
+  font-family: "Muli", sans-serif;
+}
+.text-input-new-card :focus {
+  border: none;
+  border-bottom: solid 1px #ada3a3;
+  outline: none;
+}
+.text-input-card-edit {
+  border: none;
+  border-bottom: solid 1px#ada3a3;
+  margin-bottom: 20px;
+  width: 100%;
+  outline: none;
+  font-size: 1.1em;
+  font-family: "Muli", sans-serif;
+}
+.text-input-card-edit:focus {
+  border: none;
+  border-bottom: solid 1px #ada3a3;
+  outline: none;
+}
+.buttons-card {
+  margin-top: 15px;
+  font-family: "Muli", sans-serif;
+}
+.button-delete-card {
+  margin-left: 15px;
+  font-family: "Muli", sans-serif;
+}
+.name-title-card {
+  font-weight: 600;
+  color: #606060;
+}
+.button-create-task {
+  font-family: "Muli", sans-serif;
+}
