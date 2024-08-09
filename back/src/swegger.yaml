@@ -1,0 +1,103 @@
+openapi: 3.0.0
+info:
+  title: Todo API
+  version: 1.0.0
+  description: API REST para um aplicativo de tarefas (TO-DO)
+servers:
+  - url: http://localhost:3000
+    description: Servidor local
+
+paths:
+  /users:
+    post:
+      summary: Cadastro de um novo usuário
+      description: Cria um novo usuário com nome, e-mail e senha.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: John Doe
+                email:
+                  type: string
+                  example: john.doe@example.com
+                password:
+                  type: string
+                  example: password123
+      responses:
+        '201':
+          description: Usuário criado com sucesso
+        '400':
+          description: Erro na criação do usuário
+
+  /tasks:
+    post:
+      summary: Inclusão de uma nova tarefa
+      description: Adiciona uma nova tarefa para o usuário autenticado.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                  example: Buy groceries
+                priority:
+                  type: string
+                  enum: [Alta, Média, Baixa]
+                  example: Média
+      responses:
+        '201':
+          description: Tarefa criada com sucesso
+        '400':
+          description: Erro na criação da tarefa
+
+  /tasks/pending:
+    get:
+      summary: Listar tarefas pendentes
+      description: Retorna a lista de tarefas pendentes do usuário autenticado.
+      responses:
+        '200':
+          description: Lista de tarefas pendentes
+        '401':
+          description: Não autorizado
+
+  /login:
+    post:
+      summary: Autenticação do usuário
+      description: Autentica um usuário com e-mail e senha e gera um token de acesso.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: john.doe@example.com
+                password:
+                  type: string
+                  example: password123
+      responses:
+        '200':
+          description: Token de acesso gerado com sucesso
+        '401':
+          description: Credenciais inválidas
+
+components:
+  securitySchemes:
+    jwt:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+security:
+  - jwt: []
+
